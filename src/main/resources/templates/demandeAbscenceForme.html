@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xsi:schemaLocation="http://www.thymeleaf.org " xmlns:xsi="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autorisation Exceptionnelle d'Absence en Cours</title>
+    <!-- Lien vers le fichier CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            margin-bottom: 30px;
+        }
+        .form-container .form-control {
+            margin-bottom: 15px;
+        }
+        .form-container button {
+            margin-top: 20px;
+        }
+        .back-to-list {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .back-to-list a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-to-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form-container">
+        <div class="back-to-list">
+            <a th:href="@{/absences/list}">← Retour à la liste des demandes d'absence</a>
+        </div>
+        <h2 class="text-center">Autorisation Exceptionnelle d'Absence en Cours</h2>
+        <form method="POST" th:action="@{/absences/create}">
+            <!-- Nom et Prénom -->
+            <div class="mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="nom" name="nom" required>
+            </div>
+            <div class="mb-3">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" required>
+            </div>
+            <!-- Matricule -->
+            <div class="mb-3">
+                <label for="matricule" class="form-label">Matricule</label>
+                <input type="text" class="form-control" id="matricule" name="matricule" required>
+            </div>
+            <!-- Groupe -->
+            <div class="mb-3">
+                <label for="groupe" class="form-label">Groupe (Ex: PRG25)</label>
+                <input type="text" class="form-control" id="groupe" name="groupe" required>
+            </div>
+            <!-- Niveau -->
+            <div class="mb-3">
+                <label for="niveau" class="form-label">Niveau</label>
+                <input type="text" class="form-control" id="niveau" name="niveau" required>
+            </div>
+            <!-- Filière -->
+            <div class="mb-3">
+                <label for="filiere" class="form-label">Filière</label>
+                <input type="text" class="form-control" id="filiere" name="filiere" required>
+            </div>
+            <!-- Date début demande -->
+            <div class="mb-3">
+                <label for="dateDebutDemande" class="form-label">Date début de l'absence</label>
+                <input type="date" class="form-control" id="dateDebutDemande" name="dateDebutDemande" required>
+            </div>
+            <!-- Date fin demande -->
+            <div class="mb-3">
+                <label for="dateFinDemande" class="form-label">Date fin de l'absence</label>
+                <input type="date" class="form-control" id="dateFinDemande" name="dateFinDemande" required>
+            </div>
+            <!-- Motif demande -->
+            <div class="mb-3">
+                <label for="motifDemande" class="form-label">Motif de la demande</label>
+                <textarea class="form-control" id="motifDemande" name="motifDemande" rows="3" required></textarea>
+            </div>
+            <!-- Date demande (automatiquement définie par le backend) -->
+            <input type="hidden" name="dateDemande" value="${dateDemande}">
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn btn-primary w-100">Soumettre la demande</button>
+        </form>
+    </div>
+</div>
+
+<!-- Lien vers le fichier JS de Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
